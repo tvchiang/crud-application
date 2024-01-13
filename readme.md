@@ -5,5 +5,5 @@
 
 # Pushing Code to Github
 - git add .
-- git commit -m "<message>"
+- git commit -m "message"
 - git push
