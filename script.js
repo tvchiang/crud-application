@@ -12,12 +12,27 @@ document.addEventListener("DOMContentLoaded", function () {
         // clearing old todo list
         todoList.innerHTML = '';
         for (let todo of todos) {
+
+            // loop through todos and create li element with todo details
             const li = document.createElement('li');
             li.className = 'list-group-item d-flex justify-content-between align-items-center';
             li.innerHTML = `
-                    ${todo.name} <span class="badge bg-primary">${todo.urgency}</span>               
+                    ${todo.name} <span class="badge bg-primary">${todo.urgency}</span>
+                    <button class='btn btn-warning edit-btn'>Edit</button>               
                 `;
             todoList.appendChild(li);
+
+            // add event listener to edit btn
+            li.querySelector(".edit-btn").addEventListener('click', function() {
+                // alert("Hi " + todo.name)
+                const newName = prompt("Enter the new task name:", todo.name)
+                const newUrgency = prompt("Enter the new urgency: ", todo.urgency)
+                // console.log(newName, newUrgency)
+                modifyTask(todos, todo.id, newName, newUrgency)
+                renderTodos(todos)
+            })
+
+
         }
     }
 
