@@ -1,6 +1,46 @@
 document.addEventListener("DOMContentLoaded", function () {
     // all the code here
-    
+    function addSampleTasks() {
+        addTodo(todos, "Walk the dog", "low")
+        addTodo(todos, "Clean the room", "medium");
+        addTodo(todos, "Pay the bill", "high");
+    }
+
+
+    function renderTodos(todos) {
+        const todoList = document.querySelector("#todoList");
+        // clearing old todo list
+        todoList.innerHTML = '';
+        for (let todo of todos) {
+            const li = document.createElement('li');
+            li.className = 'list-group-item d-flex justify-content-between align-items-center';
+            li.innerHTML = `
+                    ${todo.name} <span class="badge bg-primary">${todo.urgency}</span>               
+                `;
+            todoList.appendChild(li);
+        }
+    }
+
+    // CREATE
+    const addBtn = document.querySelector("#addTodo")
+    addBtn.addEventListener("click", function() {
+        const newTaskInput = document.querySelector("#taskName")
+        const taskName = newTaskInput.value
+
+        const taskUrgencySelect = document.querySelector("#taskUrgency")
+        const taskUrgency = taskUrgencySelect.value
+
+        if (taskName) {
+            addTodo(todos, taskName, taskUrgency)
+            renderTodos(todos)
+        }
+    })
+
+
+
+
+    addSampleTasks()
+    renderTodos(todos)
 });
 
 

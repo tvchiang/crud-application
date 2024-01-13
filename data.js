@@ -1,20 +1,4 @@
-let todos = [
-    {
-        "id": 50,
-        "name": "Wash Toilet",
-        "urgency": 10
-    },
-    {
-        "id": 50,
-        "name": "Mop Floor",
-        "urgency": 10
-    },
-    {
-        "id": 14,
-        "name": "Wash Dishes",
-        "urgency": 7
-    }
-];
+let todos = [];
 
 function addTodo(todos, name, urgency) {
     let newTodo = {
