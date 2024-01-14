@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
             li.className = 'list-group-item d-flex justify-content-between align-items-center';
             li.innerHTML = `
                     ${todo.name} <span class="badge bg-primary">${todo.urgency}</span>
-                    <button class='btn btn-warning edit-btn'>Edit</button>               
-                `;
+                    <button data-task-id=${todo.id} class="btn edit-btn btn-success btn-sm">Edit</button>
+                    <button data-task-id=${todo.id} class="btn delete-btn btn-danger btn-sm">Delete</button>
+                  `;
             todoList.appendChild(li);
 
             // add event listener to edit btn
@@ -37,8 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // CREATE
-    const addBtn = document.querySelector("#addTodo")
-    addBtn.addEventListener("click", function() {
+    const addBtn = document.querySelector("#todo-form")
+    addBtn.addEventListener("submit", function(event) {
+      
+        event.preventDefault(); // This stops the form from being submitted the traditional way
         const newTaskInput = document.querySelector("#taskName")
         const taskName = newTaskInput.value
 
@@ -48,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (taskName) {
             addTodo(todos, taskName, taskUrgency)
             renderTodos(todos)
+            taskNameInput.value = '';
         }
     })
 

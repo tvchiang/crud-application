@@ -19,25 +19,22 @@
         </ul>
     </div>
 
-
-    <div class="container">
-        <h3>Add to Task List</h3>
-
-        <div class="mb-3">
-            <input id="taskName" class="form-control" type="text" placeholder="Type new Todo task" aria-label="default input example">
-        </div>
-
-        <div class="mb-3">
-            <select id="taskUrgency" class="form-select" aria-label="Default select example">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-        </div>
-
-        <div>
-            <button id="addTodo" type="button" class="btn btn-success">Add</button>
-        </div>
+    <div class="container mt-5">
+        <h1 class="text-center">Todo List</h1>      
+      <div class="mb-3">
+        <form id="todo-form">
+	        <input type="text" id="taskName" class="form-control" placeholder="Task Name">
+	        </div>
+	        <div class="mb-3">
+	            <select id="taskUrgency" class="form-control">
+	                <option value="low">Low</option>
+	                <option value="medium">Medium</option>
+	                <option value="high">High</option>
+	            </select>
+	        </div>
+	        <input type="submit" id="addTodo" class="btn btn-primary mb-3" value="Add To Do"/>
+	      </form>
+    
     </div>
 
 
