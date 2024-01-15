@@ -24,13 +24,12 @@ function modifyTask(todos, id, newTaskName, newUrgency) { // id = 30
         task.name = newTaskName;
         task.urgency = newUrgency;
     } else {
-        console.log("Task is not found");
+        console.log("Task is not found modify");
     }
 }
 
 function deleteTask(todos, id) { 
     let indexToDelete = null; 
-
     // loop through todos array
     for (let i = 0; i < todos.length; i++) {
         if (todos[i].id == id) {
@@ -42,7 +41,7 @@ function deleteTask(todos, id) {
     if (indexToDelete !== null) {
         todos.splice(indexToDelete, 1);
     } else {
-        console.log("Task is not found");
+        console.log("Task is not found delete");
     }
 }
 
