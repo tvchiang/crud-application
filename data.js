@@ -1,5 +1,11 @@
-let todos = [];
+// at the top of `data.js`
+const BASE_JSON_BIN_URL = "https://api.jsonbin.io/v3/b";
+const BIN_ID = "65ae749a1f5677401f22ee76";
+const MASTER_KEY ="$2a$10$vhPTR88iTO1ut.eKZipMkOqLs45x4DwSAiMgJS.46FSGha5epB1Se";
 
+
+let todos = [];
+//let todos = await loadTasks(); 
 function addTodo(todos, name, urgency) {
     let newTodo = {
         // id is unique
@@ -7,6 +13,7 @@ function addTodo(todos, name, urgency) {
         name: name,
         urgency: urgency
     };
+   // alert("todoadd")
     todos.push(newTodo);
 }
 
@@ -61,3 +68,26 @@ function deleteAllTaskWithId(todos, id) {
     }
     
 }
+
+
+// ...add at the end of `data.js`
+async function loadTasks() {
+    const response = await axios.get(BASE_JSON_BIN_URL + "/" + BIN_ID + "/latest");
+    console.log(response.data) 
+    return response.data.record;
+  }
+
+  async function saveTasks(todos) {
+    const response = await axios.put(`${BASE_JSON_BIN_URL}/${BIN_ID}`, todos, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-Master-Key": MASTER_KEY
+      }
+    });
+    console.log('savetask') 
+    console.log(response.data) 
+    return response.data;
+  
+  }
+
+  

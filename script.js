@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // all the code here
-    function main() {
-        //let todos = []; // store all the todos
+  async function main() {
+        let todos = await loadTasks(); // store all the todos
     
         // Event listeners
         const form = document.querySelector("#todo-form");
@@ -17,10 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
           if (taskName) {
             addTodo(todos, taskName, taskUrgency);
             renderTodos(todos);
+            saveTasks(todos);
             taskNameInput.value = '';
           }
         });
-       
+        
+        const saveButton = document.querySelector("#save-btn");
+        saveButton.addEventListener("click", async function() {
+            console.log('todos',todos) 
+            saveTasks(todos);
+        })
        
         const todoList = document.querySelector("#todoList");
         todoList.addEventListener('click', function(event) {
